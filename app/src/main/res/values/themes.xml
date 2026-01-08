@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ReactActivity 需要基于 Theme.AppCompat 的主题 -->
+    <style name="Theme.MyApplication" parent="Theme.AppCompat.Light.NoActionBar" />
+</resources>
