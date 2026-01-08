@@ -1,47 +1,47 @@
-# Git 仓库设置指南
+# Git Repository Setup Guide
 
-## 将项目提交到 GitHub
+## Push Project to GitHub
 
-按照以下步骤将项目提交到 GitHub 仓库：https://github.com/lovefunCode/AndroidApp.git
+Follow these steps to push the project to the GitHub repository: https://github.com/lovefunCode/AndroidApp.git
 
-### 步骤 1: 初始化 Git 仓库
+### Step 1: Initialize Git Repository
 
 ```bash
 cd /Users/4paradigm/Documents/AndroidApp
 git init
 ```
 
-### 步骤 2: 添加远程仓库
+### Step 2: Add Remote Repository
 
 ```bash
 git remote add origin https://github.com/lovefunCode/AndroidApp.git
 ```
 
-### 步骤 3: 检查远程仓库
+### Step 3: Check Remote Repository
 
 ```bash
 git remote -v
 ```
 
-应该显示：
+Should display:
 ```
 origin  https://github.com/lovefunCode/AndroidApp.git (fetch)
 origin  https://github.com/lovefunCode/AndroidApp.git (push)
 ```
 
-### 步骤 4: 添加所有文件
+### Step 4: Add All Files
 
 ```bash
 git add .
 ```
 
-### 步骤 5: 提交更改
+### Step 5: Commit Changes
 
 ```bash
 git commit -m "Initial commit: Android App with React Native 0.80.2 integration"
 ```
 
-或者使用更详细的提交信息：
+Or use a more detailed commit message:
 
 ```bash
 git commit -m "Initial commit: Android App with React Native 0.80.2 integration
@@ -53,78 +53,77 @@ git commit -m "Initial commit: Android App with React Native 0.80.2 integration
 - Added comprehensive documentation"
 ```
 
-### 步骤 6: 设置默认分支（如果需要）
+### Step 6: Set Default Branch (if needed)
 
 ```bash
 git branch -M main
 ```
 
-### 步骤 7: 推送到 GitHub
+### Step 7: Push to GitHub
 
 ```bash
 git push -u origin main
 ```
 
-如果远程仓库已经有内容，可能需要先拉取：
+If the remote repository already has content, you may need to pull first:
 
 ```bash
 git pull origin main --allow-unrelated-histories
 git push -u origin main
 ```
 
-## 完整的命令序列
+## Complete Command Sequence
 
 ```bash
-# 1. 初始化仓库
+# 1. Initialize repository
 git init
 
-# 2. 添加远程仓库
+# 2. Add remote repository
 git remote add origin https://github.com/lovefunCode/AndroidApp.git
 
-# 3. 添加所有文件
+# 3. Add all files
 git add .
 
-# 4. 提交
+# 4. Commit
 git commit -m "Initial commit: Android App with React Native 0.80.2 integration"
 
-# 5. 设置分支名称
+# 5. Set branch name
 git branch -M main
 
-# 6. 推送到 GitHub
+# 6. Push to GitHub
 git push -u origin main
 ```
 
-## 注意事项
+## Important Notes
 
-1. **确保已登录 GitHub**：如果使用 HTTPS，可能需要输入 GitHub 用户名和密码（或 Personal Access Token）
+1. **Ensure you are logged into GitHub**: If using HTTPS, you may need to enter your GitHub username and password (or Personal Access Token)
 
-2. **如果远程仓库已有内容**：
-   - 如果远程仓库是空的，直接推送即可
-   - 如果远程仓库已有 README.md 等文件，需要先拉取：
+2. **If the remote repository already has content**:
+   - If the remote repository is empty, you can push directly
+   - If the remote repository already has files like README.md, you need to pull first:
      ```bash
      git pull origin main --allow-unrelated-histories
      git push -u origin main
      ```
 
-3. **使用 Personal Access Token**：
-   - 如果 GitHub 要求身份验证，可以使用 Personal Access Token 代替密码
-   - 创建 Token：GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+3. **Using Personal Access Token**:
+   - If GitHub requires authentication, you can use a Personal Access Token instead of a password
+   - Create Token: GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
 
-4. **检查 .gitignore**：
-   - 确保 `node_modules/`、`build/` 等文件不会被提交
-   - 已更新 `.gitignore` 包含 `react-native/node_modules/`
+4. **Check .gitignore**:
+   - Ensure files like `node_modules/`, `build/` are not committed
+   - Updated `.gitignore` includes `react-native/node_modules/`
 
-## 验证
+## Verification
 
-推送成功后，访问 https://github.com/lovefunCode/AndroidApp 查看你的代码。
+After a successful push, visit https://github.com/lovefunCode/AndroidApp to view your code.
 
-## 后续提交
+## Subsequent Commits
 
-以后每次修改后，使用以下命令提交：
+For future changes, use the following commands to commit:
 
 ```bash
 git add .
-git commit -m "描述你的更改"
+git commit -m "Describe your changes"
 git push
 ```
-

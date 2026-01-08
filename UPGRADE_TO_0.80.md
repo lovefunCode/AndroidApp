@@ -1,126 +1,125 @@
-# React Native 0.80.2 升级完成指南
+# React Native 0.80.2 Upgrade Completion Guide
 
-## 已完成的升级
+## Completed Upgrades
 
 ### 1. ✅ package.json (react-native/)
 - React Native: `0.74.5` → `0.80.2`
 - React: `18.2.0` → `19.1.0`
-- 所有 `@react-native/*` 包更新到 `0.80.2`
-- 添加了 `@react-native-community/cli` 相关包
+- All `@react-native/*` packages updated to `0.80.2`
+- Added `@react-native-community/cli` related packages
 
 ### 2. ✅ app/build.gradle.kts
 - React Android: `0.74.5` → `0.80.2`
 - Hermes Android: `0.74.5` → `0.80.2`
-- minSdk: `24` → `26` (React Native 0.80+ 要求)
+- minSdk: `24` → `26` (Required by React Native 0.80+)
 
 ### 3. ✅ MainApplication.kt
-- 代码已兼容 React Native 0.80.2
-- 使用 `MainReactPackage()` 注册核心模块
-- 配置正确
+- Code is compatible with React Native 0.80.2
+- Uses `MainReactPackage()` to register core modules
+- Configuration is correct
 
 ### 4. ✅ MainActivity.kt
-- 代码已兼容 React Native 0.80.2
-- `ReactActivity` API 使用正确
+- Code is compatible with React Native 0.80.2
+- `ReactActivity` API usage is correct
 
-### 5. ✅ Metro 配置
-- `metro.config.js` 配置正确
-- 端口配置为 9000
+### 5. ✅ Metro Configuration
+- `metro.config.js` is configured correctly
+- Port is configured to 9000
 
-### 6. ✅ Babel 配置
-- `.babelrc` 使用正确的 preset
+### 6. ✅ Babel Configuration
+- `.babelrc` uses the correct preset
 
-## 下一步操作
+## Next Steps
 
-### 步骤 1: 清理并重新安装依赖
+### Step 1: Clean and Reinstall Dependencies
 
 ```bash
-# 在 react-native 目录下
+# In the react-native directory
 cd react-native
 rm -rf node_modules package-lock.json
 npm install
 ```
 
-### 步骤 2: 清理 Android 构建缓存
+### Step 2: Clean Android Build Cache
 
 ```bash
-# 在项目根目录
+# In the project root directory
 ./gradlew clean
 ./gradlew --refresh-dependencies
 ```
 
-### 步骤 3: 清理 Metro 缓存并启动
+### Step 3: Clear Metro Cache and Start
 
 ```bash
-# 在 react-native 目录下
+# In the react-native directory
 cd react-native
 npm start -- --reset-cache
 ```
 
-### 步骤 4: 构建并运行 Android 应用
+### Step 4: Build and Run Android Application
 
 ```bash
-# 在项目根目录
+# In the project root directory
 ./gradlew :app:assembleDebug
 ```
 
-或者在 Android Studio 中：
-1. 点击 "Sync Project with Gradle Files"
-2. 点击运行按钮
+Or in Android Studio:
+1. Click "Sync Project with Gradle Files"
+2. Click the Run button
 
-## 重要变更说明
+## Important Changes
 
-### minSdk 升级到 26
-- React Native 0.80+ 要求最低 Android API 级别为 26 (Android 8.0)
-- 如果你的目标设备运行 Android 7.1 或更低版本，将无法安装此应用
+### minSdk Upgraded to 26
+- React Native 0.80+ requires minimum Android API level 26 (Android 8.0)
+- If your target device runs Android 7.1 or lower, this app cannot be installed
 
 ### React 19.1.0
-- React Native 0.80.2 使用 React 19.1.0
-- 确保你的 React Native 代码兼容 React 19 的变更
+- React Native 0.80.2 uses React 19.1.0
+- Ensure your React Native code is compatible with React 19 changes
 
-### 新架构 (New Architecture)
-- 当前配置中 `isNewArchEnabled = false`
-- 如果你想启用新架构，需要：
-  1. 设置 `isNewArchEnabled = true`
-  2. 确保所有原生模块支持新架构
-  3. 更新相关依赖
+### New Architecture
+- Current configuration has `isNewArchEnabled = false`
+- If you want to enable the new architecture, you need to:
+  1. Set `isNewArchEnabled = true`
+  2. Ensure all native modules support the new architecture
+  3. Update related dependencies
 
-## 验证清单
+## Verification Checklist
 
-升级完成后，请验证：
+After completing the upgrade, please verify:
 
-- [ ] `npm start` 成功启动 Metro 服务器
-- [ ] Android 应用可以正常构建
-- [ ] 应用可以正常启动并显示 React Native 界面
-- [ ] 热重载功能正常工作
-- [ ] 没有控制台错误或警告
+- [ ] `npm start` successfully starts the Metro server
+- [ ] Android application can build successfully
+- [ ] Application can start normally and display React Native interface
+- [ ] Hot reload functionality works correctly
+- [ ] No console errors or warnings
 
-## 可能遇到的问题
+## Potential Issues
 
-### 1. 版本不匹配错误
-**症状**: "React Native version mismatch"
+### 1. Version Mismatch Error
+**Symptom**: "React Native version mismatch"
 
-**解决方案**:
-- 确保所有 `@react-native/*` 包版本都是 `0.80.2`
-- 清理 Metro 缓存：`npm start -- --reset-cache`
+**Solution**:
+- Ensure all `@react-native/*` package versions are `0.80.2`
+- Clear Metro cache: `npm start -- --reset-cache`
 
-### 2. 构建错误
-**症状**: Gradle 构建失败
+### 2. Build Errors
+**Symptom**: Gradle build fails
 
-**解决方案**:
-- 清理项目：`./gradlew clean`
-- 刷新依赖：`./gradlew --refresh-dependencies`
-- 在 Android Studio 中点击 "Sync Project with Gradle Files"
+**Solution**:
+- Clean the project: `./gradlew clean`
+- Refresh dependencies: `./gradlew --refresh-dependencies`
+- Click "Sync Project with Gradle Files" in Android Studio
 
-### 3. 原生模块找不到
-**症状**: "TurboModuleRegistry.getEnforcing(...): 'XXX' could not be found"
+### 3. Native Module Not Found
+**Symptom**: "TurboModuleRegistry.getEnforcing(...): 'XXX' could not be found"
 
-**解决方案**:
-- 确保 `MainApplication.kt` 中正确注册了 `MainReactPackage()`
-- 检查是否有自定义原生模块需要更新
+**Solution**:
+- Ensure `MainReactPackage()` is correctly registered in `MainApplication.kt`
+- Check if there are custom native modules that need to be updated
 
-## 参考资源
+## Reference Resources
 
-- [React Native 0.80 发布说明](https://github.com/facebook/react-native/releases/tag/v0.80.0)
-- [React Native 升级助手](https://react-native-community.github.io/upgrade-helper/?from=0.74.5&to=0.80.2)
-- [React Native 官方文档](https://reactnative.dev/)
-
+- [React Native 0.80 Release Notes](https://github.com/facebook/react-native/releases/tag/v0.80.0)
+- [React Native Upgrade Helper](https://react-native-community.github.io/upgrade-helper/?from=0.74.5&to=0.80.2)
+- [React Native Official Documentation](https://reactnative.dev/)
